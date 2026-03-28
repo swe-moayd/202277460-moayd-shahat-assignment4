@@ -1,0 +1,23 @@
+
+body {
+  font-family: Arial;
+  margin: 0;
+  padding: 20px;
+  transition: 0.3s;
+}
+.dark {
+  background: #111;
+  color: white;
+}
+section {
+  margin: 40px 0;
+}
+#projectsList div {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+#projectsList div:hover {
+  transform: scale(1.02);
+}
