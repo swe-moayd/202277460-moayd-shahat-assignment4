@@ -1,42 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moayd Shahat | Portfolio</title>
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Assignment 3 portfolio for Moayd Shahat featuring state management, API integration, advanced filtering, and form validation."
+  >
+  <title>Moayd Shahat | Assignment 3 Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <header class="site-header">
+    <div class="brand-block">
+      <p class="eyebrow">SWE Portfolio</p>
+      <h1>Moayd Shahat</h1>
+      <p class="subtitle">Software Engineering student building practical web, AI, and full-stack systems.</p>
+    </div>
 
-<header>
-  <h1>Moayd Shahat</h1>
-  <button id="themeToggle">Toggle Theme</button>
-</header>
+    <nav class="top-actions" aria-label="Portfolio Controls">
+      <button id="themeToggle" class="ghost-button" type="button">Switch Theme</button>
+      <button id="statusToggle" class="ghost-button" type="button">Set Status</button>
+    </nav>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>I’m Moayd Shahat, a Software Engineering student at KFUPM with strong foundations in systems design, AI, and full‑stack development.</p>
-</section>
+  <main>
+    <section class="hero card-grid">
+      <article class="card card-accent">
+        <p class="section-label">Visitor State</p>
+        <h2 id="greeting">Welcome to my portfolio.</h2>
+        <p id="statusMessage" class="status-text">Current status: Available for academic and portfolio collaborations.</p>
+        <div class="metrics">
+          <div>
+            <span class="metric-label">Theme</span>
+            <strong id="themeLabel">Light</strong>
+          </div>
+          <div>
+            <span class="metric-label">Session Time</span>
+            <strong id="visitTimer">00:00</strong>
+          </div>
+        </div>
+      </article>
 
-<section id="projects">
-  <h2>Projects</h2>
+      <article class="card">
+        <p class="section-label">Personalize View</p>
+        <form id="visitorForm" class="inline-form">
+          <label for="visitorName">Your name</label>
+          <div class="inline-controls">
+            <input id="visitorName" name="visitorName" type="text" maxlength="30" placeholder="Enter your name">
+            <button type="submit" class="primary-button">Save Name</button>
+          </div>
+        </form>
+        <p id="visitorFeedback" class="helper-text">I store your name locally to keep the portfolio personalized.</p>
+      </article>
+    </section>
 
-  <input type="text" id="searchInput" placeholder="Search projects...">
+    <section id="about" class="content-section">
+      <div class="section-heading">
+        <p class="section-label">About</p>
+        <h2>Focused on reliable software, clean interfaces, and measurable improvements.</h2>
+      </div>
+      <div class="about-layout">
+        <article class="card">
+          <p>
+            I am a Software Engineering student at KFUPM with experience in web development,
+            AI-assisted workflows, and system-oriented problem solving. This assignment extends my
+            earlier portfolio with external data, stateful UI behavior, and richer client-side logic.
+          </p>
+        </article>
+        <article class="card">
+          <ul class="bullet-list">
+            <li>Strong interest in scalable web applications and modern JavaScript.</li>
+            <li>Comfortable with structured debugging, iterative improvement, and documentation.</li>
+            <li>Focused on building portfolio projects that are useful, testable, and maintainable.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-  <div id="projectsList"></div>
-</section>
+    <section id="projects" class="content-section">
+      <div class="section-heading">
+        <p class="section-label">Complex Logic</p>
+        <h2>Filter, sort, and adapt projects based on visitor choices.</h2>
+      </div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <form id="contactForm">
-    <input type="text" id="name" placeholder="Name">
-    <input type="email" id="email" placeholder="Email">
-    <textarea id="message" placeholder="Message"></textarea>
-    <button type="submit">Send</button>
-  </form>
-  <p id="formMsg"></p>
-</section>
+      <div class="controls-grid card">
+        <label>
+          Search Projects
+          <input type="text" id="searchInput" placeholder="Search by title or skill">
+        </label>
 
-<script src="js/script.js"></script>
+        <label>
+          Category
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="web">Web</option>
+            <option value="ai">AI</option>
+            <option value="systems">Systems</option>
+          </select>
+        </label>
+
+        <label>
+          Visitor Level
+          <select id="levelFilter">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </label>
+
+        <label>
+          Sort By
+          <select id="sortSelect">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="title">Title A-Z</option>
+          </select>
+        </label>
+      </div>
+
+      <article id="levelMessage" class="card info-banner">
+        Beginner visitors currently see guided, easier-to-read project summaries.
+      </article>
+
+      <div id="projectsList" class="projects-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="github" class="content-section">
+      <div class="section-heading">
+        <p class="section-label">API Integration</p>
+        <h2>Live GitHub repositories fetched from the GitHub public API.</h2>
+      </div>
+      <div id="repoStatus" class="card info-banner">Loading latest repositories...</div>
+      <div id="repoList" class="projects-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="contact" class="content-section">
+      <div class="section-heading">
+        <p class="section-label">Contact</p>
+        <h2>Validated form with multiple checks before submission.</h2>
+      </div>
+
+      <form id="contactForm" class="card contact-form" novalidate>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+
+        <label for="reason">Inquiry Type</label>
+        <select id="reason" name="reason">
+          <option value="">Select an option</option>
+          <option value="project">Project collaboration</option>
+          <option value="feedback">Portfolio feedback</option>
+          <option value="opportunity">Opportunity</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Write at least 20 characters."></textarea>
+
+        <button type="submit" class="primary-button">Validate and Submit</button>
+        <p id="formMsg" class="helper-text" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built for Assignment 3 with advanced JavaScript, local state management, and API integration.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
