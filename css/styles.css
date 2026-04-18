@@ -214,8 +214,22 @@ textarea {
   font: inherit;
 }
 
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.repo-link:focus-visible {
+  outline: 3px solid rgba(187, 77, 0, 0.3);
+  outline-offset: 3px;
+}
+
 textarea {
   resize: vertical;
+}
+
+.input-error {
+  border-color: #c83c1d;
+  box-shadow: 0 0 0 3px rgba(200, 60, 29, 0.12);
 }
 
 .section-heading {
@@ -308,5 +322,17 @@ textarea {
   .site-header,
   .site-footer {
     width: min(100% - 1rem, 1120px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body,
+  .ghost-button,
+  .primary-button {
+    transition: none;
   }
 }

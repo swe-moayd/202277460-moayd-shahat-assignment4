@@ -19,8 +19,8 @@
     </div>
 
     <nav class="top-actions" aria-label="Portfolio Controls">
-      <button id="themeToggle" class="ghost-button" type="button">Switch Theme</button>
-      <button id="statusToggle" class="ghost-button" type="button">Set Status</button>
+      <button id="themeToggle" class="ghost-button" type="button" aria-pressed="false">Switch Theme</button>
+      <button id="statusToggle" class="ghost-button" type="button" aria-pressed="false">Set Status</button>
     </nav>
   </header>
 
@@ -47,11 +47,11 @@
         <form id="visitorForm" class="inline-form">
           <label for="visitorName">Your name</label>
           <div class="inline-controls">
-            <input id="visitorName" name="visitorName" type="text" maxlength="30" placeholder="Enter your name">
+            <input id="visitorName" name="visitorName" type="text" maxlength="30" placeholder="Enter your name" aria-describedby="visitorFeedback">
             <button type="submit" class="primary-button">Save Name</button>
           </div>
         </form>
-        <p id="visitorFeedback" class="helper-text">I store your name locally to keep the portfolio personalized.</p>
+        <p id="visitorFeedback" class="helper-text" aria-live="polite">I store your name locally to keep the portfolio personalized.</p>
       </article>
     </section>
 
@@ -87,7 +87,7 @@
       <div class="controls-grid card">
         <label>
           Search Projects
-          <input type="text" id="searchInput" placeholder="Search by title or skill">
+          <input type="text" id="searchInput" placeholder="Search by title or skill" aria-describedby="levelMessage">
         </label>
 
         <label>
@@ -131,7 +131,7 @@
         <p class="section-label">API Integration</p>
         <h2>Live GitHub repositories fetched from the GitHub public API.</h2>
       </div>
-      <div id="repoStatus" class="card info-banner">Loading latest repositories...</div>
+      <div id="repoStatus" class="card info-banner" aria-live="polite">Loading latest repositories...</div>
       <div id="repoList" class="projects-grid" aria-live="polite"></div>
     </section>
 
@@ -143,13 +143,13 @@
 
       <form id="contactForm" class="card contact-form" novalidate>
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your full name">
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
 
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com">
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
         <label for="reason">Inquiry Type</label>
-        <select id="reason" name="reason">
+        <select id="reason" name="reason" required>
           <option value="">Select an option</option>
           <option value="project">Project collaboration</option>
           <option value="feedback">Portfolio feedback</option>
@@ -157,10 +157,10 @@
         </select>
 
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" placeholder="Write at least 20 characters."></textarea>
+        <textarea id="message" name="message" rows="6" placeholder="Write at least 20 characters." required></textarea>
 
         <button type="submit" class="primary-button">Validate and Submit</button>
-        <p id="formMsg" class="helper-text" aria-live="polite"></p>
+        <p id="formMsg" class="helper-text" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>

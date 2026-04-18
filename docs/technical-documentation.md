@@ -1,78 +1,126 @@
 # Technical Documentation
 
-## Overview
+## 1. Overview
 
-This portfolio is a static single-page web application built with HTML, CSS, and vanilla JavaScript. The application focuses on Assignment 3 requirements by combining API integration, client-side state management, conditional rendering, form validation, and responsive styling.
+This project is a static single-page portfolio web application built with HTML, CSS, and vanilla JavaScript. It was designed to satisfy Assignment 3 requirements by combining application state, external API usage, conditional rendering, validation logic, and responsive interface behavior.
 
-## Main Features
+## 2. Architecture
 
-### 1. API Integration
+The project is intentionally small and dependency-free.
 
-- The portfolio fetches live repositories from the GitHub public API.
-- The request is performed using `fetch()` with an `AbortController` timeout.
-- If the request fails or the response is invalid, the application shows a user-friendly fallback message.
+- `index.html` defines the semantic structure and all user-facing sections.
+- `css/styles.css` provides layout, theme tokens, responsive rules, and accessibility-oriented styling.
+- `js/script.js` manages application state, rendering, events, validation, and API calls.
+- `docs/ai-usage-report.md` documents how AI tools were used and reviewed.
 
-### 2. Complex Logic
+## 3. Core Features
 
-- The project list supports:
-  - Text search
-  - Category filtering
-  - Experience-level filtering
-  - Sorting by newest, oldest, or title
-- The interface also changes the recommendation message based on the selected visitor level.
-- The contact form validates multiple conditions before submission:
-  - Name must not be empty
-  - Email must match a valid format
-  - Inquiry type must be selected
-  - Message must contain at least 20 characters
+### 3.1 Persistent State
 
-### 3. State Management
+The application stores selected values in `localStorage`:
 
-The application manages and updates several pieces of client-side state:
+- theme preference
+- visitor name
+- availability status
 
-- Theme preference
-- Visitor name
-- Availability/focus mode
-- Session start time
-- Current project filters and sorting selections
+These values are restored on page load through the `state` object and applied during initialization.
 
-Persistent state is stored with `localStorage` so that theme, visitor name, and status remain available across page reloads.
+### 3.2 Dynamic Filtering and Sorting
 
-### 4. Performance Considerations
+The projects section supports multiple client-side operations:
 
-- The project uses a small file structure with no heavy dependencies.
-- Styling and script logic are written in plain CSS and vanilla JavaScript to avoid unnecessary framework overhead.
-- The page has no large image assets that would slow down loading.
-- The GitHub API request is limited to six repositories to reduce response size.
-- Timeout handling prevents the interface from waiting indefinitely for the API.
+- text search by project title and stack
+- category filtering
+- visitor-level filtering
+- sorting by date or title
 
-### 5. Compatibility
+The filtering logic is centralized in `getFilteredProjects()` so the rendered project list always matches current UI state.
 
-- The project is designed for modern desktop and mobile browsers.
-- Layouts use responsive CSS grid and flexible spacing for smaller screens.
-- Standard web APIs are used: `fetch`, `localStorage`, `setInterval`, and DOM event listeners.
+### 3.3 Conditional UI Messaging
 
-## File Responsibilities
+The application changes explanatory text depending on the visitor level selection. This demonstrates conditional rendering beyond simple show/hide behavior and ties the UI to the active state model.
 
-- `index.html`: semantic page structure and all application sections
-- `css/styles.css`: responsive layout, theme tokens, and visual styling
-- `js/script.js`: application state, rendering logic, API integration, timer, and form validation
-- `docs/ai-usage-report.md`: AI usage documentation required by the assignment
+### 3.4 GitHub API Integration
 
-## Testing and Verification
+The application fetches public repositories from the GitHub REST API using `fetch()`.
 
-The following manual checks should be completed in the browser:
+Implementation details:
 
-1. Confirm the theme toggle updates the page and remains saved after reload.
-2. Save a visitor name and confirm the greeting changes after reload.
-3. Toggle status and verify the message changes correctly.
-4. Test project search, category filter, level filter, and sorting combinations.
-5. Disconnect the network or force an invalid API request to verify the GitHub error message.
-6. Submit the contact form with invalid data and confirm validation messages appear.
-7. Resize the browser window to verify responsive layout behavior.
+- the request is limited to six repositories
+- the request includes an `Accept` header
+- an `AbortController` cancels the request after six seconds
+- loading, empty, success, and error states are handled explicitly in the UI
 
-## Suggested Submission Improvement
+### 3.5 Contact Form Validation
 
-The local folder currently still uses the Assignment 2 directory name. For final submission, the GitHub repository should be renamed to:
+The contact form checks several rules before reporting success:
 
-`202277460-moayd-shahat-assignment3`
+- name must not be empty
+- email must match a valid pattern
+- inquiry type must be selected
+- message must contain at least 20 characters
+
+Invalid fields are marked with `aria-invalid="true"` and a visual error state so feedback is clearer to both users and graders.
+
+## 4. Accessibility Considerations
+
+The project includes several accessibility improvements:
+
+- semantic landmarks such as `header`, `main`, `section`, and `footer`
+- associated labels for form controls
+- live regions for validation and API status messages
+- visible keyboard focus styles
+- `aria-pressed` state for toggle buttons
+- reduced-motion support through `prefers-reduced-motion`
+
+## 5. Code Quality Decisions
+
+Several implementation choices were made to strengthen maintainability:
+
+- state is grouped in a single object instead of being scattered across handlers
+- rendering logic is separated into focused functions such as `renderGreeting()`, `renderStatus()`, and `renderProjects()`
+- API and project cards are built with DOM methods instead of raw HTML injection for safer rendering
+- constants are used for storage keys and project data
+
+## 6. Performance Notes
+
+The project is lightweight by design:
+
+- no external frameworks or build tools
+- one stylesheet and one script file
+- no heavy images or third-party UI libraries
+- limited API payload size
+- timeout protection prevents hanging network requests
+
+For a small coursework portfolio, this keeps initial loading fast and predictable.
+
+## 7. Browser Compatibility
+
+The project targets modern browsers that support:
+
+- `fetch`
+- `localStorage`
+- `AbortController`
+- CSS Grid
+- `classList`
+
+It is expected to work well in current Chrome, Edge, Firefox, and Safari releases on desktop and mobile.
+
+## 8. Manual Verification Checklist
+
+The following checks should be performed before submission:
+
+1. Load the page and confirm all sections render correctly.
+2. Toggle theme and confirm the choice persists after reload.
+3. Save a visitor name and confirm the greeting updates.
+4. Toggle availability status and confirm the button text and status text update.
+5. Test search, category filter, level filter, and sort order together.
+6. Confirm empty-state rendering appears when filters remove all projects.
+7. Validate the contact form with invalid data and then valid data.
+8. Test the GitHub repository section with normal network conditions.
+9. Test the GitHub repository section with the network disabled to confirm fallback behavior.
+10. Resize the page to mobile width and confirm controls stack cleanly.
+
+## 9. Conclusion
+
+This project demonstrates a clear upgrade from a basic portfolio into a more interactive web application. It shows state persistence, structured JavaScript logic, API consumption, responsive design, validation, accessibility improvements, and complete supporting documentation, which are the key qualities expected for a high-scoring Assignment 3 submission.

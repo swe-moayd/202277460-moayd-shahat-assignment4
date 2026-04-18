@@ -73,6 +73,8 @@ const formMessage = document.getElementById("formMsg");
 function applyTheme() {
   document.body.classList.toggle("dark", state.theme === "dark");
   themeLabel.textContent = state.theme === "dark" ? "Dark" : "Light";
+  themeToggle.setAttribute("aria-pressed", String(state.theme === "dark"));
+  themeToggle.textContent = state.theme === "dark" ? "Use Light Theme" : "Use Dark Theme";
   localStorage.setItem(storageKeys.theme, state.theme);
 }
 
@@ -89,6 +91,7 @@ function renderStatus() {
     ? "Current status: Available for academic and portfolio collaborations."
     : "Current status: Focus mode enabled for coursework and project delivery.";
   statusToggle.textContent = available ? "Set Focus Mode" : "Set Available";
+  statusToggle.setAttribute("aria-pressed", String(!available));
   localStorage.setItem(storageKeys.status, state.availability);
 }
 
@@ -163,12 +166,21 @@ function renderProjects() {
   filteredProjects.forEach((project) => {
     const article = document.createElement("article");
     article.className = "card project-card";
-    article.innerHTML = `
-      <span class="project-tag">${project.category.toUpperCase()} • ${project.level}</span>
-      <h3>${project.title}</h3>
-      <p>${project.description}</p>
-      <p class="project-meta">Updated ${project.date} • Skills: ${project.stack.join(", ")}</p>
-    `;
+    const tag = document.createElement("span");
+    tag.className = "project-tag";
+    tag.textContent = `${project.category.toUpperCase()} • ${project.level}`;
+
+    const title = document.createElement("h3");
+    title.textContent = project.title;
+
+    const description = document.createElement("p");
+    description.textContent = project.description;
+
+    const meta = document.createElement("p");
+    meta.className = "project-meta";
+    meta.textContent = `Updated ${project.date} • Skills: ${project.stack.join(", ")}`;
+
+    article.append(tag, title, description, meta);
     projectsList.appendChild(article);
   });
 }
@@ -205,12 +217,24 @@ async function loadRepositories() {
     repositories.forEach((repo) => {
       const article = document.createElement("article");
       article.className = "card repo-card";
-      article.innerHTML = `
-        <h3>${repo.name}</h3>
-        <p>${repo.description || "No description provided for this repository."}</p>
-        <p class="repo-meta">Stars: ${repo.stargazers_count} • Language: ${repo.language || "Not specified"}</p>
-        <a class="repo-link" href="${repo.html_url}" target="_blank" rel="noreferrer">View Repository</a>
-      `;
+      const title = document.createElement("h3");
+      title.textContent = repo.name;
+
+      const description = document.createElement("p");
+      description.textContent = repo.description || "No description provided for this repository.";
+
+      const meta = document.createElement("p");
+      meta.className = "repo-meta";
+      meta.textContent = `Stars: ${repo.stargazers_count} • Language: ${repo.language || "Not specified"}`;
+
+      const link = document.createElement("a");
+      link.className = "repo-link";
+      link.href = repo.html_url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = "View Repository";
+
+      article.append(title, description, meta, link);
       repoList.appendChild(article);
     });
   } catch (error) {
@@ -253,6 +277,19 @@ function validateContactForm(formData) {
   }
 
   return errors;
+}
+
+function setFieldErrorState(fieldId, hasError) {
+  const field = document.getElementById(fieldId);
+  field.classList.toggle("input-error", hasError);
+  field.setAttribute("aria-invalid", String(hasError));
+}
+
+function syncFormErrorState(formData) {
+  setFieldErrorState("name", !formData.name.trim());
+  setFieldErrorState("email", !validateEmail(formData.email.trim()));
+  setFieldErrorState("reason", !formData.reason);
+  setFieldErrorState("message", formData.message.trim().length < 20);
 }
 
 themeToggle.addEventListener("click", () => {
@@ -310,6 +347,7 @@ contactForm.addEventListener("submit", (event) => {
   };
 
   const errors = validateContactForm(formData);
+  syncFormErrorState(formData);
 
   if (errors.length > 0) {
     formMessage.textContent = errors.join(" ");
@@ -318,6 +356,7 @@ contactForm.addEventListener("submit", (event) => {
 
   formMessage.textContent = `Thanks ${formData.name.trim()}, your ${formData.reason} message passed validation.`;
   contactForm.reset();
+  ["name", "email", "reason", "message"].forEach((fieldId) => setFieldErrorState(fieldId, false));
 });
 
 function initialize() {
