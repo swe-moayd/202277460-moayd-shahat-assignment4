@@ -16,6 +16,10 @@ The final version demonstrates:
 - AI usage documentation and responsible-use reflection
 - technical documentation and presentation preparation
 
+## Live Demo
+
+https://swe-moayd.github.io/202277460-moayd-shahat-assignment4/
+
 ## Incremental Relationship to Assignment 3
 
 Assignment 4 depends on Assignment 3. The Assignment 3 version already included the main technical foundation:
