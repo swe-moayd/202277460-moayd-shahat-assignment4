@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 4 Portfolio Presentation</title>
+  <style>
+    :root {
+      --bg: #111716;
+      --surface: #f7f8f2;
+      --text: #18211e;
+      --muted: #53615b;
+      --primary: #116a5b;
+      --accent: #c27a15;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    section {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      scroll-snap-align: start;
+      padding: 4rem;
+    }
+
+    article {
+      width: min(980px, 100%);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 4rem;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    h1,
+    h2 {
+      margin: 0 0 1rem;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+      font-size: 1.35rem;
+    }
+
+    ul {
+      display: grid;
+      gap: 0.7rem;
+      margin: 1rem 0 0;
+      padding-left: 1.4rem;
+    }
+
+    .eyebrow {
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .metric {
+      border-left: 6px solid var(--primary);
+      padding-left: 1rem;
+    }
+
+    @media print {
+      main {
+        height: auto;
+        overflow: visible;
+      }
+
+      section {
+        min-height: 100vh;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <article>
+        <p class="eyebrow">Assignment 4 Final Portfolio</p>
+        <h1>Moayd Shahat</h1>
+        <p>Incremental upgrade from Assignment 3 into a complete, polished personal web application.</p>
+      </article>
+    </section>
+
+    <section>
+      <article>
+        <p class="eyebrow">Objective</p>
+        <h2>Bring the course concepts together</h2>
+        <ul>
+          <li>Responsive portfolio interface</li>
+          <li>Stateful JavaScript behavior</li>
+          <li>API integration and fallback handling</li>
+          <li>Validation, documentation, and presentation support</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <article>
+        <p class="eyebrow">Technical Features</p>
+        <div class="split">
+          <div class="metric">
+            <h2>Frontend</h2>
+            <p>Semantic HTML, CSS variables, responsive grids, accessible focus states, and optimized hero media.</p>
+          </div>
+          <div class="metric">
+            <h2>Logic</h2>
+            <p>Persistent state, dynamic project rendering, filters, sorting, statistics, API loading, and validation.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <article>
+        <p class="eyebrow">Live Demo</p>
+        <h2>What to show</h2>
+        <ul>
+          <li>Theme, visitor name, status, and timer</li>
+          <li>Project search, category, complexity, sorting, and stats</li>
+          <li>GitHub API section and fallback behavior</li>
+          <li>Contact form validation</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <article>
+        <p class="eyebrow">AI Integration</p>
+        <h2>Responsible assistance</h2>
+        <ul>
+          <li>Planning and rubric gap analysis</li>
+          <li>Implementation support and debugging</li>
+          <li>Documentation drafting and review</li>
+          <li>Generated hero image, reviewed and optimized</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <article>
+        <p class="eyebrow">Conclusion</p>
+        <h2>Final outcome</h2>
+        <p>A complete static portfolio with polished UI, interactive JavaScript, external data, validation, documentation, and a ready presentation structure.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

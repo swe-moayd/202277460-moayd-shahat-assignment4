@@ -5,89 +5,169 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Assignment 3 portfolio for Moayd Shahat featuring state management, API integration, advanced filtering, and form validation."
+    content="Assignment 4 final portfolio for Moayd Shahat, extending the Assignment 3 web application with a polished portfolio experience, documentation, API integration, and presentation-ready content."
   >
-  <title>Moayd Shahat | Assignment 3 Portfolio</title>
+  <title>Moayd Shahat | Assignment 4 Final Portfolio</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand-block">
-      <p class="eyebrow">SWE Portfolio</p>
-      <h1>Moayd Shahat</h1>
-      <p class="subtitle">Software Engineering student building practical web, AI, and full-stack systems.</p>
-    </div>
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
 
-    <nav class="top-actions" aria-label="Portfolio Controls">
-      <button id="themeToggle" class="ghost-button" type="button" aria-pressed="false">Switch Theme</button>
-      <button id="statusToggle" class="ghost-button" type="button" aria-pressed="false">Set Status</button>
+  <header class="site-header">
+    <a class="brand-link" href="#home" aria-label="Moayd Shahat portfolio home">
+      <span class="brand-mark" aria-hidden="true">MS</span>
+      <span>
+        <strong>Moayd Shahat</strong>
+        <small>Software Engineering Portfolio</small>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#github">GitHub</a>
+      <a href="#contact">Contact</a>
+      <a href="#evidence">Evidence</a>
     </nav>
+
+    <div class="top-actions" aria-label="Portfolio controls">
+      <button id="themeToggle" class="ghost-button" type="button" aria-pressed="false">Dark Theme</button>
+      <button id="statusToggle" class="ghost-button" type="button" aria-pressed="false">Focus Mode</button>
+    </div>
   </header>
 
-  <main>
-    <section class="hero card-grid">
-      <article class="card card-accent">
-        <p class="section-label">Visitor State</p>
-        <h2 id="greeting">Welcome to my portfolio.</h2>
-        <p id="statusMessage" class="status-text">Current status: Available for academic and portfolio collaborations.</p>
-        <div class="metrics">
-          <div>
-            <span class="metric-label">Theme</span>
-            <strong id="themeLabel">Light</strong>
-          </div>
-          <div>
-            <span class="metric-label">Session Time</span>
-            <strong id="visitTimer">00:00</strong>
-          </div>
+  <main id="mainContent">
+    <section id="home" class="hero" aria-labelledby="heroTitle">
+      <img
+        class="hero-image"
+        src="assets/images/portfolio-workspace.jpg"
+        alt="Modern developer workspace with a laptop, wireframe sketches, and planning notes"
+      >
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Assignment 4 Final Portfolio</p>
+        <h1 id="heroTitle">Moayd Shahat</h1>
+        <p class="hero-lede">
+          A polished personal web application that brings together state management, API integration,
+          responsive UI design, form validation, documentation, and AI-assisted workflow transparency.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#projects">View Projects</a>
+          <a class="secondary-button" href="#contact">Start Contact</a>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="card">
-        <p class="section-label">Personalize View</p>
-        <form id="visitorForm" class="inline-form">
-          <label for="visitorName">Your name</label>
-          <div class="inline-controls">
-            <input id="visitorName" name="visitorName" type="text" maxlength="30" placeholder="Enter your name" aria-describedby="visitorFeedback">
-            <button type="submit" class="primary-button">Save Name</button>
-          </div>
-        </form>
-        <p id="visitorFeedback" class="helper-text" aria-live="polite">I store your name locally to keep the portfolio personalized.</p>
+    <section class="state-strip" aria-label="Live portfolio state">
+      <article class="state-card">
+        <span class="metric-label">Visitor Greeting</span>
+        <strong id="greeting">Welcome to my portfolio.</strong>
+      </article>
+      <article class="state-card">
+        <span class="metric-label">Availability</span>
+        <strong id="statusMessage">Available for academic and portfolio collaborations.</strong>
+      </article>
+      <article class="state-card">
+        <span class="metric-label">Current Theme</span>
+        <strong id="themeLabel">Light</strong>
+      </article>
+      <article class="state-card">
+        <span class="metric-label">Session Time</span>
+        <strong id="visitTimer">00:00</strong>
       </article>
     </section>
 
     <section id="about" class="content-section">
       <div class="section-heading">
         <p class="section-label">About</p>
-        <h2>Focused on reliable software, clean interfaces, and measurable improvements.</h2>
+        <h2>Building reliable web experiences with clear logic and practical documentation.</h2>
       </div>
-      <div class="about-layout">
+
+      <div class="two-column">
         <article class="card">
+          <h3>Profile</h3>
           <p>
-            I am a Software Engineering student at KFUPM with experience in web development,
-            AI-assisted workflows, and system-oriented problem solving. This assignment extends my
-            earlier portfolio with external data, stateful UI behavior, and richer client-side logic.
+            I am a Software Engineering student at KFUPM focused on web development, AI-supported
+            workflows, and disciplined problem solving. This final portfolio extends my Assignment 3
+            application into a more complete, presentation-ready product.
           </p>
         </article>
         <article class="card">
+          <h3>What Changed From Assignment 3</h3>
           <ul class="bullet-list">
-            <li>Strong interest in scalable web applications and modern JavaScript.</li>
-            <li>Comfortable with structured debugging, iterative improvement, and documentation.</li>
-            <li>Focused on building portfolio projects that are useful, testable, and maintainable.</li>
+            <li>Reframed the page as a complete personal portfolio rather than a feature demo.</li>
+            <li>Added stronger visual hierarchy, documentation links, and presentation support.</li>
+            <li>Kept the Assignment 3 JavaScript features and improved their surrounding UX.</li>
           </ul>
         </article>
       </div>
     </section>
 
+    <section class="content-section">
+      <div class="section-heading">
+        <p class="section-label">Capabilities</p>
+        <h2>Course concepts demonstrated in one integrated application.</h2>
+      </div>
+
+      <div class="capability-grid">
+        <article class="card capability-card">
+          <span class="capability-index">01</span>
+          <h3>Responsive Interface</h3>
+          <p>Layouts adapt across desktop, tablet, and mobile widths with stable card, form, and control behavior.</p>
+        </article>
+        <article class="card capability-card">
+          <span class="capability-index">02</span>
+          <h3>Client-Side State</h3>
+          <p>Theme, visitor name, status, filters, and timers are managed through structured JavaScript state.</p>
+        </article>
+        <article class="card capability-card">
+          <span class="capability-index">03</span>
+          <h3>External Data</h3>
+          <p>Recent GitHub repositories load through the public GitHub API with loading and error states.</p>
+        </article>
+        <article class="card capability-card">
+          <span class="capability-index">04</span>
+          <h3>Validation</h3>
+          <p>Contact input is checked before submission with accessible error states and clear feedback.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="personalize" class="content-section">
+      <div class="section-heading">
+        <p class="section-label">Personalize</p>
+        <h2>Persistent browser state gives each visitor a customized session.</h2>
+      </div>
+
+      <form id="visitorForm" class="card inline-form">
+        <label for="visitorName">Your name</label>
+        <div class="inline-controls">
+          <input
+            id="visitorName"
+            name="visitorName"
+            type="text"
+            maxlength="30"
+            placeholder="Enter your name"
+            aria-describedby="visitorFeedback"
+          >
+          <button type="submit" class="primary-button">Save Name</button>
+        </div>
+        <p id="visitorFeedback" class="helper-text" aria-live="polite">
+          Your name is stored locally in this browser to personalize the portfolio greeting.
+        </p>
+      </form>
+    </section>
+
     <section id="projects" class="content-section">
       <div class="section-heading">
-        <p class="section-label">Complex Logic</p>
-        <h2>Filter, sort, and adapt projects based on visitor choices.</h2>
+        <p class="section-label">Projects</p>
+        <h2>Filter, sort, and review portfolio work by topic and complexity.</h2>
       </div>
 
       <div class="controls-grid card">
         <label>
           Search Projects
-          <input type="text" id="searchInput" placeholder="Search by title or skill" aria-describedby="levelMessage">
+          <input type="text" id="searchInput" placeholder="Search title, skill, or detail" aria-describedby="levelMessage">
         </label>
 
         <label>
@@ -97,14 +177,15 @@
             <option value="web">Web</option>
             <option value="ai">AI</option>
             <option value="systems">Systems</option>
+            <option value="documentation">Documentation</option>
           </select>
         </label>
 
         <label>
-          Visitor Level
+          Complexity
           <select id="levelFilter">
             <option value="all">All Levels</option>
-            <option value="beginner">Beginner</option>
+            <option value="foundational">Foundational</option>
             <option value="advanced">Advanced</option>
           </select>
         </label>
@@ -119,9 +200,24 @@
         </label>
       </div>
 
-      <article id="levelMessage" class="card info-banner">
-        Beginner visitors currently see guided, easier-to-read project summaries.
+      <article id="levelMessage" class="info-banner" aria-live="polite">
+        Select a project complexity to adapt the portfolio recommendations.
       </article>
+
+      <div class="portfolio-stats" aria-label="Filtered project statistics">
+        <article class="stat-tile">
+          <span class="metric-label">Visible Projects</span>
+          <strong id="visibleProjectCount">0</strong>
+        </article>
+        <article class="stat-tile">
+          <span class="metric-label">Skills Displayed</span>
+          <strong id="visibleSkillCount">0</strong>
+        </article>
+        <article class="stat-tile">
+          <span class="metric-label">Top Match</span>
+          <strong id="topMatchLabel">None yet</strong>
+        </article>
+      </div>
 
       <div id="projectsList" class="projects-grid" aria-live="polite"></div>
     </section>
@@ -131,14 +227,39 @@
         <p class="section-label">API Integration</p>
         <h2>Live GitHub repositories fetched from the GitHub public API.</h2>
       </div>
-      <div id="repoStatus" class="card info-banner" aria-live="polite">Loading latest repositories...</div>
+      <div id="repoStatus" class="info-banner" aria-live="polite">Loading latest repositories...</div>
       <div id="repoList" class="projects-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-heading">
+        <p class="section-label">Development Process</p>
+        <h2>Incremental improvement from Assignment 3 to a final polished product.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <span>Assignment 3 Base</span>
+          <h3>Interactive Application Core</h3>
+          <p>State persistence, filtering, sorting, API fetching, and validation established the technical foundation.</p>
+        </article>
+        <article class="timeline-item">
+          <span>Assignment 4 Upgrade</span>
+          <h3>Professional Portfolio Layer</h3>
+          <p>Visual hierarchy, richer content, evidence links, and presentation preparation made the project complete.</p>
+        </article>
+        <article class="timeline-item">
+          <span>Final Review</span>
+          <h3>Quality and Documentation</h3>
+          <p>README, technical notes, AI usage, and manual test steps now support the final submission.</p>
+        </article>
+      </div>
     </section>
 
     <section id="contact" class="content-section">
       <div class="section-heading">
         <p class="section-label">Contact</p>
-        <h2>Validated form with multiple checks before submission.</h2>
+        <h2>Validated form with clear feedback before submission.</h2>
       </div>
 
       <form id="contactForm" class="card contact-form" novalidate>
@@ -154,6 +275,7 @@
           <option value="project">Project collaboration</option>
           <option value="feedback">Portfolio feedback</option>
           <option value="opportunity">Opportunity</option>
+          <option value="presentation">Presentation question</option>
         </select>
 
         <label for="message">Message</label>
@@ -163,10 +285,48 @@
         <p id="formMsg" class="helper-text" role="status" aria-live="polite"></p>
       </form>
     </section>
+
+    <section id="evidence" class="content-section">
+      <div class="section-heading">
+        <p class="section-label">Submission Evidence</p>
+        <h2>Documentation and presentation support required for Assignment 4.</h2>
+      </div>
+
+      <div class="evidence-grid">
+        <a class="card evidence-link" href="README.md">
+          <span>README</span>
+          <strong>Project overview, setup, feature guide, and testing notes.</strong>
+        </a>
+        <a class="card evidence-link" href="docs/technical-documentation.md">
+          <span>Technical Documentation</span>
+          <strong>Architecture, implementation choices, compatibility, and verification checklist.</strong>
+        </a>
+        <a class="card evidence-link" href="docs/user-guide.md">
+          <span>User Guide</span>
+          <strong>Visitor instructions for using filters, personalization, API data, and form validation.</strong>
+        </a>
+        <a class="card evidence-link" href="docs/ai-usage-report.md">
+          <span>AI Usage Report</span>
+          <strong>Tools used, benefits, limitations, learning outcomes, and responsible-use notes.</strong>
+        </a>
+        <a class="card evidence-link" href="docs/rubric-evidence.md">
+          <span>Rubric Evidence</span>
+          <strong>Direct mapping from Assignment 4 requirements to project files and features.</strong>
+        </a>
+        <a class="card evidence-link" href="docs/submission-checklist.md">
+          <span>Submission Checklist</span>
+          <strong>Final repository, deployment, video, and Blackboard submission steps.</strong>
+        </a>
+        <a class="card evidence-link" href="presentation/README.md">
+          <span>Presentation Plan</span>
+          <strong>5-7 minute demo structure aligned with the assignment instructions.</strong>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>Built for Assignment 3 with advanced JavaScript, local state management, and API integration.</p>
+    <p>Built as the final Assignment 4 portfolio by extending the Assignment 3 application incrementally.</p>
   </footer>
 
   <script src="js/script.js"></script>

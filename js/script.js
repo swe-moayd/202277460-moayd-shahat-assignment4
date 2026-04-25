@@ -17,81 +17,126 @@ const state = {
 
 const projects = [
   {
-    title: "Outreach System",
-    description: "A structured management platform for tracking outreach workflows and student engagement.",
+    title: "Assignment 4 Final Portfolio",
+    description: "A polished portfolio application that integrates the Assignment 3 feature set with stronger presentation, documentation, and professional UI decisions.",
+    category: "web",
+    level: "advanced",
+    date: "2026-04-25",
+    stack: ["HTML", "CSS", "JavaScript", "Responsive Design", "Documentation"],
+    evidence: "README.md"
+  },
+  {
+    title: "Assignment 3 Interactive Portfolio",
+    description: "The incremental base for this final submission, including persistent state, project filters, GitHub API fetching, and validated contact flow.",
+    category: "web",
+    level: "advanced",
+    date: "2026-04-18",
+    stack: ["State Management", "Fetch API", "Form Validation"],
+    evidence: "docs/technical-documentation.md"
+  },
+  {
+    title: "Venture Outreach System",
+    description: "A structured outreach management concept for tracking contacts, communication stages, and follow-up workflows.",
     category: "systems",
     level: "advanced",
-    date: "2025-03-08",
-    stack: ["JavaScript", "Data Modeling"]
-  },
-  {
-    title: "Portfolio Website",
-    description: "A responsive personal website focused on usability, accessibility, and iterative UI refinement.",
-    category: "web",
-    level: "beginner",
-    date: "2025-11-12",
-    stack: ["HTML", "CSS", "JavaScript"]
-  },
-  {
-    title: "Campus Event Finder",
-    description: "A web interface for browsing student events with filtering and location-aware summaries.",
-    category: "web",
-    level: "beginner",
-    date: "2025-09-20",
-    stack: ["Web UI", "Interaction Design"]
+    date: "2026-03-30",
+    stack: ["Workflow Design", "Data Modeling", "JavaScript"],
+    evidence: "#projects"
   },
   {
     title: "Study Planner Assistant",
-    description: "An AI-assisted planner concept that prioritizes study tasks based on urgency and course weight.",
+    description: "An AI-assisted planning concept that organizes study tasks by urgency, workload, and course priority.",
     category: "ai",
     level: "advanced",
-    date: "2025-10-03",
-    stack: ["Prompt Design", "Workflow Logic"]
+    date: "2026-03-18",
+    stack: ["Prompt Design", "Task Logic", "AI Workflow"],
+    evidence: "docs/ai-usage-report.md"
+  },
+  {
+    title: "Campus Event Finder",
+    description: "A student-focused browsing interface for exploring events with categories, summaries, and practical search behavior.",
+    category: "web",
+    level: "foundational",
+    date: "2026-02-16",
+    stack: ["Interaction Design", "Filtering", "Accessibility"],
+    evidence: "#projects"
+  },
+  {
+    title: "Technical Documentation Pack",
+    description: "A documentation set covering setup, architecture, AI usage, testing, and presentation planning for the final submission.",
+    category: "documentation",
+    level: "foundational",
+    date: "2026-04-25",
+    stack: ["README", "Technical Writing", "Manual Testing"],
+    evidence: "docs/technical-documentation.md"
   }
 ];
 
-const themeToggle = document.getElementById("themeToggle");
-const statusToggle = document.getElementById("statusToggle");
-const themeLabel = document.getElementById("themeLabel");
-const statusMessage = document.getElementById("statusMessage");
-const greeting = document.getElementById("greeting");
-const visitorTimer = document.getElementById("visitTimer");
-const visitorForm = document.getElementById("visitorForm");
-const visitorNameInput = document.getElementById("visitorName");
-const visitorFeedback = document.getElementById("visitorFeedback");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const levelFilter = document.getElementById("levelFilter");
-const sortSelect = document.getElementById("sortSelect");
-const levelMessage = document.getElementById("levelMessage");
-const projectsList = document.getElementById("projectsList");
-const repoStatus = document.getElementById("repoStatus");
-const repoList = document.getElementById("repoList");
-const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMsg");
+const fallbackRepositories = [
+  {
+    name: "202277460-moayd-shahat-assignment4",
+    description: "Expected final repository name for the Assignment 4 portfolio submission.",
+    language: "HTML/CSS/JavaScript",
+    stargazers_count: 0,
+    html_url: "#evidence"
+  },
+  {
+    name: "202277460-moayd-shahat-assignment3",
+    description: "Incremental base project extended into the final Assignment 4 portfolio.",
+    language: "JavaScript",
+    stargazers_count: 0,
+    html_url: "#projects"
+  }
+];
+
+const elements = {
+  themeToggle: document.getElementById("themeToggle"),
+  statusToggle: document.getElementById("statusToggle"),
+  themeLabel: document.getElementById("themeLabel"),
+  statusMessage: document.getElementById("statusMessage"),
+  greeting: document.getElementById("greeting"),
+  visitTimer: document.getElementById("visitTimer"),
+  visitorForm: document.getElementById("visitorForm"),
+  visitorNameInput: document.getElementById("visitorName"),
+  visitorFeedback: document.getElementById("visitorFeedback"),
+  searchInput: document.getElementById("searchInput"),
+  categoryFilter: document.getElementById("categoryFilter"),
+  levelFilter: document.getElementById("levelFilter"),
+  sortSelect: document.getElementById("sortSelect"),
+  levelMessage: document.getElementById("levelMessage"),
+  visibleProjectCount: document.getElementById("visibleProjectCount"),
+  visibleSkillCount: document.getElementById("visibleSkillCount"),
+  topMatchLabel: document.getElementById("topMatchLabel"),
+  projectsList: document.getElementById("projectsList"),
+  repoStatus: document.getElementById("repoStatus"),
+  repoList: document.getElementById("repoList"),
+  contactForm: document.getElementById("contactForm"),
+  formMessage: document.getElementById("formMsg")
+};
 
 function applyTheme() {
-  document.body.classList.toggle("dark", state.theme === "dark");
-  themeLabel.textContent = state.theme === "dark" ? "Dark" : "Light";
-  themeToggle.setAttribute("aria-pressed", String(state.theme === "dark"));
-  themeToggle.textContent = state.theme === "dark" ? "Use Light Theme" : "Use Dark Theme";
+  const darkMode = state.theme === "dark";
+  document.body.classList.toggle("dark", darkMode);
+  elements.themeLabel.textContent = darkMode ? "Dark" : "Light";
+  elements.themeToggle.setAttribute("aria-pressed", String(darkMode));
+  elements.themeToggle.textContent = darkMode ? "Light Theme" : "Dark Theme";
   localStorage.setItem(storageKeys.theme, state.theme);
 }
 
 function renderGreeting() {
   const name = state.visitorName.trim();
-  greeting.textContent = name
-    ? `Welcome, ${name}. Explore the upgraded assignment 3 portfolio.`
-    : "Welcome to my portfolio.";
+  elements.greeting.textContent = name
+    ? `Welcome, ${name}. This is the final Assignment 4 portfolio.`
+    : "Welcome to my final portfolio.";
 }
 
 function renderStatus() {
   const available = state.availability === "available";
-  statusMessage.textContent = available
-    ? "Current status: Available for academic and portfolio collaborations."
-    : "Current status: Focus mode enabled for coursework and project delivery.";
-  statusToggle.textContent = available ? "Set Focus Mode" : "Set Available";
-  statusToggle.setAttribute("aria-pressed", String(!available));
+  elements.statusMessage.textContent = available
+    ? "Available for academic and portfolio collaborations."
+    : "Focus mode enabled for coursework and final submission review.";
+  elements.statusToggle.textContent = available ? "Focus Mode" : "Available Mode";
+  elements.statusToggle.setAttribute("aria-pressed", String(!available));
   localStorage.setItem(storageKeys.status, state.availability);
 }
 
@@ -103,19 +148,25 @@ function formatDuration(ms) {
 }
 
 function updateTimer() {
-  visitorTimer.textContent = formatDuration(Date.now() - state.visitStartedAt);
+  elements.visitTimer.textContent = formatDuration(Date.now() - state.visitStartedAt);
 }
 
-// Combine search, filters, and sorting in one place so the rendered list always matches UI state.
+function getProjectSearchText(project) {
+  return [
+    project.title,
+    project.description,
+    project.category,
+    project.level,
+    ...project.stack
+  ].join(" ").toLowerCase();
+}
+
 function getFilteredProjects() {
   const search = state.search.trim().toLowerCase();
 
   return projects
     .filter((project) => {
-      const matchesSearch =
-        search === "" ||
-        project.title.toLowerCase().includes(search) ||
-        project.stack.some((item) => item.toLowerCase().includes(search));
+      const matchesSearch = search === "" || getProjectSearchText(project).includes(search);
       const matchesCategory = state.category === "all" || project.category === state.category;
       const matchesLevel = state.level === "all" || project.level === state.level;
 
@@ -133,42 +184,66 @@ function getFilteredProjects() {
     });
 }
 
-function renderLevelMessage() {
-  if (state.level === "beginner") {
-    levelMessage.textContent = "Beginner mode highlights approachable projects with simpler scope and clear UI goals.";
+function renderLevelMessage(filteredProjects) {
+  if (state.level === "foundational") {
+    elements.levelMessage.textContent =
+      "Foundational mode highlights approachable work with clear UI, documentation, and usability goals.";
     return;
   }
 
   if (state.level === "advanced") {
-    levelMessage.textContent = "Advanced mode emphasizes projects with heavier logic, system thinking, and AI-oriented workflows.";
+    elements.levelMessage.textContent =
+      "Advanced mode emphasizes projects with heavier JavaScript logic, API usage, and system thinking.";
     return;
   }
 
-  levelMessage.textContent = "Select a visitor level to change the explanation and narrow the project recommendations.";
+  elements.levelMessage.textContent =
+    `${filteredProjects.length} project${filteredProjects.length === 1 ? "" : "s"} match the current search and filter choices.`;
+}
+
+function renderProjectStats(filteredProjects) {
+  const visibleSkills = new Set(filteredProjects.flatMap((project) => project.stack));
+  elements.visibleProjectCount.textContent = String(filteredProjects.length);
+  elements.visibleSkillCount.textContent = String(visibleSkills.size);
+  elements.topMatchLabel.textContent = filteredProjects[0] ? filteredProjects[0].title : "None";
+}
+
+function createChip(label) {
+  const chip = document.createElement("span");
+  chip.className = "project-chip";
+  chip.textContent = label;
+  return chip;
 }
 
 function renderProjects() {
   const filteredProjects = getFilteredProjects();
-  projectsList.innerHTML = "";
+  elements.projectsList.innerHTML = "";
 
-  renderLevelMessage();
+  renderLevelMessage(filteredProjects);
+  renderProjectStats(filteredProjects);
 
   if (filteredProjects.length === 0) {
-    projectsList.innerHTML = `
-      <article class="card empty-state">
-        <h3>No matching projects</h3>
-        <p>Try a different search term, category, or experience level.</p>
-      </article>
-    `;
+    const emptyState = document.createElement("article");
+    emptyState.className = "card empty-state";
+
+    const title = document.createElement("h3");
+    title.textContent = "No matching projects";
+
+    const copy = document.createElement("p");
+    copy.textContent = "Try a different search term, category, or complexity level.";
+
+    emptyState.append(title, copy);
+    elements.projectsList.appendChild(emptyState);
     return;
   }
 
   filteredProjects.forEach((project) => {
     const article = document.createElement("article");
     article.className = "card project-card";
+
     const tag = document.createElement("span");
     tag.className = "project-tag";
-    tag.textContent = `${project.category.toUpperCase()} • ${project.level}`;
+    tag.textContent = `${project.category.toUpperCase()} - ${project.level}`;
 
     const title = document.createElement("h3");
     title.textContent = project.title;
@@ -178,16 +253,60 @@ function renderProjects() {
 
     const meta = document.createElement("p");
     meta.className = "project-meta";
-    meta.textContent = `Updated ${project.date} • Skills: ${project.stack.join(", ")}`;
+    meta.textContent = `Updated ${project.date}`;
 
-    article.append(tag, title, description, meta);
-    projectsList.appendChild(article);
+    const chips = document.createElement("div");
+    chips.className = "project-actions";
+    project.stack.forEach((skill) => chips.appendChild(createChip(skill)));
+
+    const evidenceLink = document.createElement("a");
+    evidenceLink.className = "repo-link";
+    evidenceLink.href = project.evidence;
+    evidenceLink.textContent = "View Evidence";
+
+    article.append(tag, title, description, meta, chips, evidenceLink);
+    elements.projectsList.appendChild(article);
   });
 }
 
-// Fetch a small, recent repository list and fall back cleanly if the API is unavailable.
+function createRepositoryCard(repo) {
+  const article = document.createElement("article");
+  article.className = "card repo-card";
+
+  const title = document.createElement("h3");
+  title.textContent = repo.name;
+
+  const description = document.createElement("p");
+  description.textContent = repo.description || "No description provided for this repository.";
+
+  const meta = document.createElement("p");
+  meta.className = "repo-meta";
+  meta.textContent = `Stars: ${repo.stargazers_count} - Language: ${repo.language || "Not specified"}`;
+
+  const link = document.createElement("a");
+  link.className = "repo-link";
+  link.href = repo.html_url;
+
+  if (repo.html_url.startsWith("http")) {
+    link.target = "_blank";
+    link.rel = "noreferrer";
+  }
+
+  link.textContent = "View Repository";
+
+  article.append(title, description, meta, link);
+  return article;
+}
+
+function renderRepositories(repositories) {
+  elements.repoList.innerHTML = "";
+  repositories.forEach((repo) => {
+    elements.repoList.appendChild(createRepositoryCard(repo));
+  });
+}
+
 async function loadRepositories() {
-  repoStatus.textContent = "Loading latest repositories...";
+  elements.repoStatus.textContent = "Loading latest repositories from GitHub...";
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 6000);
@@ -205,41 +324,19 @@ async function loadRepositories() {
     }
 
     const repositories = await response.json();
-    repoList.innerHTML = "";
 
     if (!Array.isArray(repositories) || repositories.length === 0) {
-      repoStatus.textContent = "No public repositories were returned by the API.";
+      elements.repoStatus.textContent = "No public repositories were returned by the API. Showing submission placeholders.";
+      renderRepositories(fallbackRepositories);
       return;
     }
 
-    repoStatus.textContent = "Repositories loaded successfully from GitHub.";
-
-    repositories.forEach((repo) => {
-      const article = document.createElement("article");
-      article.className = "card repo-card";
-      const title = document.createElement("h3");
-      title.textContent = repo.name;
-
-      const description = document.createElement("p");
-      description.textContent = repo.description || "No description provided for this repository.";
-
-      const meta = document.createElement("p");
-      meta.className = "repo-meta";
-      meta.textContent = `Stars: ${repo.stargazers_count} • Language: ${repo.language || "Not specified"}`;
-
-      const link = document.createElement("a");
-      link.className = "repo-link";
-      link.href = repo.html_url;
-      link.target = "_blank";
-      link.rel = "noreferrer";
-      link.textContent = "View Repository";
-
-      article.append(title, description, meta, link);
-      repoList.appendChild(article);
-    });
+    elements.repoStatus.textContent = "Repositories loaded successfully from the GitHub API.";
+    renderRepositories(repositories);
   } catch (error) {
-    repoList.innerHTML = "";
-    repoStatus.textContent = "Unable to load GitHub repositories right now. Please try again later.";
+    elements.repoStatus.textContent =
+      "Unable to load GitHub repositories right now. Showing local submission references instead.";
+    renderRepositories(fallbackRepositories);
     console.error("GitHub API error:", error);
   } finally {
     clearTimeout(timeoutId);
@@ -256,7 +353,6 @@ function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Validate several fields together to demonstrate multi-step form logic.
 function validateContactForm(formData) {
   const errors = [];
 
@@ -292,75 +388,82 @@ function syncFormErrorState(formData) {
   setFieldErrorState("message", formData.message.trim().length < 20);
 }
 
-themeToggle.addEventListener("click", () => {
-  state.theme = state.theme === "dark" ? "light" : "dark";
-  applyTheme();
-});
-
-statusToggle.addEventListener("click", () => {
-  state.availability = state.availability === "available" ? "focus" : "available";
-  renderStatus();
-});
-
-visitorForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = visitorNameInput.value;
-
-  if (!name.trim()) {
-    visitorFeedback.textContent = "Enter a name before saving your personalized greeting.";
-    return;
-  }
-
-  setVisitorName(name);
-  visitorFeedback.textContent = `Saved locally for this browser: ${state.visitorName}.`;
-  visitorForm.reset();
-});
-
-searchInput.addEventListener("input", (event) => {
-  state.search = event.target.value;
-  renderProjects();
-});
-
-categoryFilter.addEventListener("change", (event) => {
-  state.category = event.target.value;
-  renderProjects();
-});
-
-levelFilter.addEventListener("change", (event) => {
-  state.level = event.target.value;
-  renderProjects();
-});
-
-sortSelect.addEventListener("change", (event) => {
-  state.sortBy = event.target.value;
-  renderProjects();
-});
-
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const formData = {
+function getContactFormData() {
+  return {
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
     reason: document.getElementById("reason").value,
     message: document.getElementById("message").value
   };
+}
 
-  const errors = validateContactForm(formData);
-  syncFormErrorState(formData);
+function bindEvents() {
+  elements.themeToggle.addEventListener("click", () => {
+    state.theme = state.theme === "dark" ? "light" : "dark";
+    applyTheme();
+  });
 
-  if (errors.length > 0) {
-    formMessage.textContent = errors.join(" ");
-    return;
-  }
+  elements.statusToggle.addEventListener("click", () => {
+    state.availability = state.availability === "available" ? "focus" : "available";
+    renderStatus();
+  });
 
-  formMessage.textContent = `Thanks ${formData.name.trim()}, your ${formData.reason} message passed validation.`;
-  contactForm.reset();
-  ["name", "email", "reason", "message"].forEach((fieldId) => setFieldErrorState(fieldId, false));
-});
+  elements.visitorForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = elements.visitorNameInput.value;
+
+    if (!name.trim()) {
+      elements.visitorFeedback.textContent = "Enter a name before saving your personalized greeting.";
+      return;
+    }
+
+    setVisitorName(name);
+    elements.visitorFeedback.textContent = `Saved locally for this browser: ${state.visitorName}.`;
+    elements.visitorForm.reset();
+  });
+
+  elements.searchInput.addEventListener("input", (event) => {
+    state.search = event.target.value;
+    renderProjects();
+  });
+
+  elements.categoryFilter.addEventListener("change", (event) => {
+    state.category = event.target.value;
+    renderProjects();
+  });
+
+  elements.levelFilter.addEventListener("change", (event) => {
+    state.level = event.target.value;
+    renderProjects();
+  });
+
+  elements.sortSelect.addEventListener("change", (event) => {
+    state.sortBy = event.target.value;
+    renderProjects();
+  });
+
+  elements.contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = getContactFormData();
+    const errors = validateContactForm(formData);
+    syncFormErrorState(formData);
+
+    if (errors.length > 0) {
+      elements.formMessage.textContent = errors.join(" ");
+      return;
+    }
+
+    elements.formMessage.textContent =
+      `Thanks ${formData.name.trim()}, your ${formData.reason} message passed validation.`;
+    elements.contactForm.reset();
+    ["name", "email", "reason", "message"].forEach((fieldId) => setFieldErrorState(fieldId, false));
+  });
+}
 
 function initialize() {
-  visitorNameInput.value = state.visitorName;
+  elements.visitorNameInput.value = state.visitorName;
+  bindEvents();
   applyTheme();
   renderGreeting();
   renderStatus();

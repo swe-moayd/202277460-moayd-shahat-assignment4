@@ -1,77 +1,86 @@
 # AI Usage Report
 
-## 1. AI Tools Used
+## 1. Tools Used and Use Cases
 
-The main AI tools used during this project were:
+The main AI tools used during this assignment were:
 
-- ChatGPT
-- Codex
+- ChatGPT / Codex: planning, code review, implementation support, documentation drafting, and debugging.
+- AI image generation: creation of the portfolio hero workspace image used in `assets/images/portfolio-workspace.jpg`.
 
-## 2. What AI Was Used For
+## 2. How AI Was Used
 
-AI support was used in a focused and practical way during development:
+AI support was used during the Assignment 4 upgrade in the following ways:
 
-- reviewing the earlier Assignment 2 structure and identifying missing Assignment 3 requirements
-- suggesting feature ideas for state management, filtering, sorting, and form validation
-- refining JavaScript organization and UI messaging
-- improving documentation structure and wording
-- helping identify rubric gaps such as API failure handling, accessibility, and stronger submission notes
+- reviewing the Assignment 4 instructions and identifying gaps in the Assignment 3 project
+- planning how to preserve Assignment 3 functionality while improving the final portfolio
+- improving HTML structure, section organization, and user-facing copy
+- refining CSS layout, responsive behavior, color tokens, and focus states
+- reorganizing JavaScript rendering and validation logic
+- improving fallback behavior for GitHub API errors
+- drafting README, technical documentation, user guide, and presentation outline
+- generating a visual hero image suitable for a professional portfolio
 
-## 3. How AI Output Was Evaluated
+## 3. Benefits
 
-AI output was not copied blindly. Suggestions were reviewed and adjusted before being used.
+AI helped with:
 
-The review process included:
+- converting assignment requirements into a practical implementation checklist
+- identifying missing deliverables such as presentation planning and user documentation
+- improving code organization and naming consistency
+- strengthening accessibility and validation details
+- speeding up documentation work while keeping the content aligned with the actual project
+- producing a visual asset without relying on external copyrighted images
 
-- checking whether each suggestion matched the assignment rubric
-- removing ideas that were too generic or unnecessary
-- rewriting text to match the actual project behavior
-- modifying code to fit the existing file structure and naming
-- keeping only changes that were understandable and maintainable
+## 4. Challenges and Limitations
 
-## 4. Human Modifications Made
+AI assistance had several limitations:
 
-The final submission includes substantial human review and modification:
+- some suggestions needed to be simplified to fit a small static coursework project
+- documentation drafts had to be checked against the actual implemented behavior
+- generated UI ideas required manual adjustment to match responsive design constraints
+- API behavior still required practical fallback handling because network access can fail
+- image generation required review to confirm it was appropriate, professional, and free of logos or readable private text
 
-- project descriptions, UI text, and portfolio content were tailored manually
-- validation rules and state behavior were checked against actual page interactions
-- documentation was rewritten to accurately reflect the repository contents
-- accessibility-related details such as live regions, focus states, and field error states were refined to better suit the project
+## 5. Learning Outcomes
 
-## 5. Benefits of Using AI
+Using AI during this assignment helped reinforce:
 
-AI provided several useful benefits:
+- how to turn a rubric into concrete implementation tasks
+- how to improve an existing project incrementally instead of rebuilding from scratch
+- how to separate state, rendering, validation, and data-fetching logic
+- how to document AI use transparently for academic integrity
+- how to evaluate AI-generated suggestions instead of accepting them blindly
+- how to prepare technical explanation for a short project presentation
 
-- faster conversion of assignment requirements into an implementation plan
-- easier identification of weak spots in documentation and feature coverage
-- support during debugging and cleanup
-- clearer organization of the final submission materials
+## 6. Responsible Use and Modifications
 
-## 6. Limitations and Risks
+AI output was reviewed, edited, and tested before being included. The final project was not submitted as unmodified AI output.
 
-AI assistance also had limitations:
+Human review included:
 
-- some suggestions were too broad for a small coursework project
-- some generated wording needed correction to avoid vague documentation
-- implementation ideas still required manual judgment to keep the project coherent
+- checking that the features matched the Assignment 4 requirements
+- editing code to fit the existing file structure
+- replacing vague wording with project-specific documentation
+- confirming the app still works as a static website
+- reviewing the generated image before referencing it in the page
+- keeping the Assignment 3 functionality as the foundation for the final upgrade
 
-These limitations were handled through manual review and revision.
+## 7. Originality and Academic Integrity
 
-## 7. Understanding Demonstrated
+The project remains an original coursework portfolio. AI was used as an assistant for planning, implementation support, documentation, and visual asset creation. The final submission reflects reviewed and modified work, and this report documents where AI assistance was involved.
 
-This project reflects understanding of the AI-generated material rather than passive acceptance. The final code and documentation show that the suggestions were interpreted, adapted, and integrated into the project deliberately.
+## 8. Generated Image Details
 
-Examples of that understanding include:
+The hero image was generated with the built-in image generation tool and then optimized from PNG to JPEG for performance.
 
-- applying state persistence only where it made sense
-- separating rendering logic from event handling
-- adding explicit fallback behavior for external API failure
-- documenting not just what was built, but why those choices supported the rubric
+Final project asset:
 
-## 8. Innovation
+```text
+assets/images/portfolio-workspace.jpg
+```
 
-AI was used as a structured development assistant rather than as a replacement for decision-making. The project combines AI-assisted planning with manual implementation choices, resulting in a more polished submission with stronger logic, clearer documentation, and better usability than a minimal static portfolio.
+Prompt summary:
 
-## 9. Responsible Use Statement
-
-All AI-assisted content was reviewed, edited, and validated before inclusion. The final submission reflects human judgment, human revision, and manual verification of the implemented features.
+```text
+Create a polished editorial-style hero image showing a modern developer workspace for a software engineering student portfolio, with a clean desk, laptop, abstract code editor shapes, notebook sketches, subtle UI wireframes, soft daylight, no people, no readable brand names, no logos, no watermarks, and enough negative space for overlay text.
+```
