@@ -104,25 +104,8 @@ Assignment 4 upgrades that base into a complete final portfolio by improving the
 |-- .nojekyll
 ```
 
-## Run Locally
 
-### Option 1: Open Directly
 
-Open `index.html` in a modern browser.
-
-### Option 2: Use a Static Server
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit:
-
-```text
-http://localhost:8000
-```
-
-Using a local server is recommended because the GitHub API section behaves more like it will after deployment.
 
 ## Manual Testing Checklist
 
@@ -155,7 +138,7 @@ This is a static website. It can be deployed by uploading the repository to GitH
 For the final Assignment 4 submission, the GitHub repository should be named:
 
 ```text
-202277460-moayd-shahat-assignment4
+https://swe-moayd.github.io/202277460-moayd-shahat-assignment4/
 ```
 
 ## Submission Notes
